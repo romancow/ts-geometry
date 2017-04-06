@@ -1,0 +1,14 @@
+
+#configuration files
+yarn.lock
+tsconfig.json
+.nvmrc
+
+# source
+src/
+
+# tests
+test/
+
+# vscode settings
+.vscode/

@@ -3,12 +3,14 @@
   "version": "1.0.0",
   "description": "Helpful types and methods for working with basic coordinate geometry",
   "private": true,
-  "main": "index.js",
+  "main": "dist/index.js",
+  "types": "types/index",
   "engines": {
-    "node": ">=6.5.0"
+    "node": "*"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "tsc"
   },
   "author": "Sean Wilson",
   "license": "UNLICENSED",
