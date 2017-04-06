@@ -4,7 +4,7 @@
   "description": "Helpful types and methods for working with basic coordinate geometry",
   "private": true,
   "main": "dist/index.js",
-  "types": "types/index",
+  "types": "types/index.d.ts",
   "engines": {
     "node": "*"
   },
