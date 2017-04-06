@@ -1,1 +1,1 @@
-Helpful types and methods for working with basic coordinate geometry in javascript
+Helpful types and methods for working with basic coordinate geometry in typescript

@@ -2,6 +2,7 @@
   "name": "geometry",
   "version": "1.0.0",
   "description": "Helpful types and methods for working with basic coordinate geometry",
+  "copyright": "Data Concepts, Inc.",
   "private": true,
   "main": "dist/index.js",
   "types": "types/index.d.ts",
@@ -12,8 +13,21 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "tsc"
   },
-  "author": "Sean Wilson",
-  "license": "UNLICENSED",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/romancow/ts-geometry.git"
+  },
+  "author": {
+    "name": "Sean Wilson",
+    "email": "scw@adque.com",
+    "url": "http://seanwilson.me"
+  },
+  "license": "MIT",
+  "licenseUrl": "https://raw.githubusercontent.com/romancow/ts-geometry/master/LICENSE.txt",
+  "bugs": {
+    "url": "https://github.com/romancow/ts-geometry/issues"
+  },
+  "homepage": "https://github.com/romancow/ts-geometry",
   "devDependencies": {
     "typescript": "^2.2.2"
   }
