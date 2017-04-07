@@ -3,7 +3,6 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const object_helpers_1 = require("./object-helpers");
 const size_1 = require("./size");
 const scale_1 = require("./scale");
-const bordered_rectangle_1 = require("./bordered-rectangle");
 class Rectangle {
     constructor(props) {
         this.top = props.top;
@@ -109,4 +108,5 @@ class Rectangle {
     }
 }
 exports.default = Rectangle;
+const bordered_rectangle_1 = require("./bordered-rectangle");
 //# sourceMappingURL=rectangle.js.map
