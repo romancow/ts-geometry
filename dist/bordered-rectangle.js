@@ -1,6 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 const rectangle_1 = require("./rectangle");
+const borders_1 = require("./borders");
 const object_helpers_1 = require("./object-helpers");
 class BorderedRectangle extends rectangle_1.default {
     constructor(rect, borders = BorderedRectangle.defaultBorders) {
@@ -11,6 +12,11 @@ class BorderedRectangle extends rectangle_1.default {
         if (this._interior == null)
             this._interior = new rectangle_1.default(BorderedRectangle.applyBorders(this, this.borders, -1));
         return this._interior;
+    }
+    scale(scale) {
+        const scaledRect = super.scale(scale);
+        const scaledBorders = borders_1.default.scale(this.borders, scale);
+        return new BorderedRectangle(scaledRect, scaledBorders);
     }
     static addBorders(rect, borders) {
         return new BorderedRectangle(BorderedRectangle.applyBorders(rect, borders), borders);

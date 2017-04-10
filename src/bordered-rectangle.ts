@@ -1,5 +1,6 @@
 import Rectangle, { Rectangular } from './rectangle'
 import Borders from './borders'
+import Scale from './scale'
 import ObjectExt from './object-helpers'
 
 export default class BorderedRectangle extends Rectangle {
@@ -17,6 +18,12 @@ export default class BorderedRectangle extends Rectangle {
 		if (this._interior == null)
 			this._interior = new Rectangle(BorderedRectangle.applyBorders(this, this.borders, -1))
 		return this._interior
+	}
+
+	scale(scale: Scale) {
+		const scaledRect = super.scale(scale)
+		const scaledBorders = Borders.scale(this.borders, scale)
+		return new BorderedRectangle(scaledRect, scaledBorders)
 	}
 
 	static addBorders(rect: Rectangular, borders: Borders) {
