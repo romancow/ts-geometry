@@ -4,7 +4,7 @@ interface Size {
     readonly height: number;
 }
 declare namespace Size {
-    function scale(size: Size, scale: Scale): Size;
+    function scale(size: Size | number, scale: Scale): Size;
     function abs(size: Size): Size;
 }
 export default Size;

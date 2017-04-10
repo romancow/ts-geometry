@@ -1,3 +1,4 @@
+import ObjectExt from './object-helpers'
 import Scale from './scale'
 
 interface Size {
@@ -6,11 +7,13 @@ interface Size {
 }
 
 namespace Size {
-	export function scale(size: Size, scale: Scale): Size {
-		const {x: scaleX, y: scaleY} = Scale.forceXY(scale)
+	export function scale(size: Size | number, scale: Scale): Size {
+		const { width, height } = ObjectExt.isNumber(size) ?
+			{ width: size, height: size } : size
+		const { x: scaleX, y: scaleY } = Scale.forceXY(scale)
 		return {
-			width: size.width * scaleX,
-			height: size.height * scaleY
+			width: width * scaleX,
+			height: height * scaleY
 		}
 	}
 

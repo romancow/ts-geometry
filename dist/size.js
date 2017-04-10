@@ -1,13 +1,16 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+const object_helpers_1 = require("./object-helpers");
 const scale_1 = require("./scale");
 var Size;
 (function (Size) {
     function scale(size, scale) {
+        const { width, height } = object_helpers_1.default.isNumber(size) ?
+            { width: size, height: size } : size;
         const { x: scaleX, y: scaleY } = scale_1.default.forceXY(scale);
         return {
-            width: size.width * scaleX,
-            height: size.height * scaleY
+            width: width * scaleX,
+            height: height * scaleY
         };
     }
     Size.scale = scale;
