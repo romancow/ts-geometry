@@ -22,6 +22,12 @@ exports.default = {
                 result[key] = mapped;
         });
         return result;
+    },
+    round: function (value, precision = 0) {
+        let multiplier = Math.pow(10, Math.abs(precision || 0));
+        if (precision < 0)
+            multiplier = 1 / multiplier;
+        return Math.round(value * multiplier) / multiplier;
     }
 };
-//# sourceMappingURL=object-helpers.js.map
+//# sourceMappingURL=utilities.js.map

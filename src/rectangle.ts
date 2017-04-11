@@ -1,4 +1,4 @@
-import ObjectExt from './object-helpers'
+import Utilities from './utilities'
 import Size from './size'
 import Point from './point'
 import Scale from './scale'
@@ -66,7 +66,7 @@ export default class Rectangle implements Rectangular {
 	}
 
 	static offset(rect: Rectangular, offset: Size | number) {
-		const {width, height} = ObjectExt.isNumber(offset) ?
+		const {width, height} = Utilities.isNumber(offset) ?
 			{width: offset, height: offset} : offset
 		return new Rectangle({
 			top: rect.top + height, 
@@ -77,7 +77,7 @@ export default class Rectangle implements Rectangular {
 	}
 
 	static inflate(rect: Rectangular, size: Size | number) {
-		const {width, height} = ObjectExt.isNumber(size) ?
+		const {width, height} = Utilities.isNumber(size) ?
 			{width: size, height: size} : size
 		return new Rectangle({
 			top: rect.top, 
@@ -137,7 +137,7 @@ export default class Rectangle implements Rectangular {
 	}
 
 	private static ensureSize(size: Size | number) {
-		return ObjectExt.isNumber(size) ? {width: size, height: size} : size
+		return Utilities.isNumber(size) ? {width: size, height: size} : size
 	}
 }
 

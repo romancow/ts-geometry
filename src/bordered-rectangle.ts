@@ -1,7 +1,7 @@
 import Rectangle, { Rectangular } from './rectangle'
 import Borders from './borders'
 import Scale from './scale'
-import ObjectExt from './object-helpers'
+import Utilities from './utilities'
 
 export default class BorderedRectangle extends Rectangle {
 	private static defaultBorders: Borders = {top: 0, right: 0, bottom: 0, left: 0}
@@ -11,7 +11,7 @@ export default class BorderedRectangle extends Rectangle {
 
 	constructor(rect: Rectangular, borders: Borders = BorderedRectangle.defaultBorders) {
 		super(rect)
-		this.borders = ObjectExt.cordon(borders)
+		this.borders = Utilities.cordon(borders)
 	}
 
 	get interior() {

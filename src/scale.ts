@@ -1,4 +1,4 @@
-import ObjectExt from './object-helpers'
+import Utilities from './utilities'
 
 type Scale = number | {
 	x: number
@@ -7,11 +7,11 @@ type Scale = number | {
 
 namespace Scale {
 	export function forceXY(scale: Scale): {x: number, y: number} {
-		return ObjectExt.isNumber(scale) ? {x: scale, y: scale} : scale
+		return Utilities.isNumber(scale) ? {x: scale, y: scale} : scale
 	}
 
 	export function invert(scale: Scale): Scale {
-		return ObjectExt.isNumber(scale) ?
+		return Utilities.isNumber(scale) ?
 			1/scale : {x: 1/scale.x, y: 1/scale.y}
 	}
 }

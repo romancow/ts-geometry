@@ -6,5 +6,6 @@ declare var _default: {
     }, select: string[], map: (val: T, key: string, index: number) => U) => {
         [key: string]: U;
     };
+    round: (value: number, precision?: number) => number;
 };
 export default _default;

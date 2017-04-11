@@ -7,6 +7,9 @@ function isClass(obj: Object, className: string) {
 }
 
 export default {
+
+	/* Object utility methods */
+
 	isNumber: function (obj: Object): obj is number {
 		return isClass(obj, 'number')
 	},
@@ -23,5 +26,13 @@ export default {
 				result[key] = mapped
 		})
 		return result
+	},
+
+	/* Number utility methods */
+
+	round: function(value: number, precision: number = 0) {
+		let multiplier = Math.pow(10, Math.abs(precision || 0))
+		if (precision < 0) multiplier = 1 / multiplier
+		return Math.round(value * multiplier) / multiplier
 	}
 }
