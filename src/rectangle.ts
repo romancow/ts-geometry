@@ -99,13 +99,9 @@ export default class Rectangle implements Rectangular {
 
 	static round(rect: Rectangular, precision: number = 0) {
 		const select = ['left', 'top', 'width', 'height']
-		return new Rectangle(
-			<Rectangular> <any> ObjectExt.selectMap(<any>rect, select, (val: number) => {
-				let multiplier = Math.pow(10, Math.abs(precision || 0))
-				if (precision < 0) multiplier = 1 / multiplier
-				return Math.round(val * multiplier) / multiplier
-			})
-		)
+		const rounder = (val: number) => Utilities.round(val, precision)
+		const rounded = Utilities.selectMap(<any>rect, select, rounder)
+		return new Rectangle(<Rectangular> <any> rounded)
 	}
 	
 	static from(origin: Point, size: Size | number) {

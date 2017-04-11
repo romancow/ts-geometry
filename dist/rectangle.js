@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-const object_helpers_1 = require("./object-helpers");
+const utilities_1 = require("./utilities");
 const size_1 = require("./size");
 const scale_1 = require("./scale");
 class Rectangle {
@@ -42,7 +42,7 @@ class Rectangle {
         return new Rectangle({ top: top, left: left, width: right - left, height: bottom - top });
     }
     static offset(rect, offset) {
-        const { width, height } = object_helpers_1.default.isNumber(offset) ?
+        const { width, height } = utilities_1.default.isNumber(offset) ?
             { width: offset, height: offset } : offset;
         return new Rectangle({
             top: rect.top + height,
@@ -52,7 +52,7 @@ class Rectangle {
         });
     }
     static inflate(rect, size) {
-        const { width, height } = object_helpers_1.default.isNumber(size) ?
+        const { width, height } = utilities_1.default.isNumber(size) ?
             { width: size, height: size } : size;
         return new Rectangle({
             top: rect.top,
@@ -72,12 +72,9 @@ class Rectangle {
     }
     static round(rect, precision = 0) {
         const select = ['left', 'top', 'width', 'height'];
-        return new Rectangle(object_helpers_1.default.selectMap(rect, select, (val) => {
-            let multiplier = Math.pow(10, Math.abs(precision || 0));
-            if (precision < 0)
-                multiplier = 1 / multiplier;
-            return Math.round(val * multiplier) / multiplier;
-        }));
+        const rounder = (val) => utilities_1.default.round(val, precision);
+        const rounded = utilities_1.default.selectMap(rect, select, rounder);
+        return new Rectangle(rounded);
     }
     static from(origin, size) {
         const { width, height } = this.ensureSize(size);
@@ -104,7 +101,7 @@ class Rectangle {
         return (rect.bottom != null) ? rect.bottom : rect.top + rect.height;
     }
     static ensureSize(size) {
-        return object_helpers_1.default.isNumber(size) ? { width: size, height: size } : size;
+        return utilities_1.default.isNumber(size) ? { width: size, height: size } : size;
     }
 }
 exports.default = Rectangle;
