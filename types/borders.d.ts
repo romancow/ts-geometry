@@ -1,4 +1,5 @@
 import Scale from './scale';
+import Size from './size';
 declare type Borders = {
     top: number;
     right: number;
@@ -7,6 +8,7 @@ declare type Borders = {
 };
 declare namespace Borders {
     function create(topBottom: number, leftRight?: number): Borders;
+    function fromInset(outer: Size, inner: Size): Borders;
     function scale(borders: Borders, scale: Scale): Borders;
 }
 export default Borders;

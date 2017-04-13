@@ -1,4 +1,5 @@
 import Scale from './scale'
+import Size from './size'
 
 type Borders = {
 	top: number
@@ -15,6 +16,12 @@ namespace Borders {
 			bottom: topBottom,
 			left: leftRight
 		}
+	}
+
+	export function fromInset(outer: Size, inner: Size) {
+		const topBottom = (outer.height - inner.height) / 2
+		const leftRight = (outer.width - inner.width) / 2
+		return Borders.create(topBottom, leftRight)
 	}
 
 	export function scale(borders: Borders, scale: Scale): Borders {

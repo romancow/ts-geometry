@@ -12,6 +12,12 @@ var Borders;
         };
     }
     Borders.create = create;
+    function fromInset(outer, inner) {
+        const topBottom = (outer.height - inner.height) / 2;
+        const leftRight = (outer.width - inner.width) / 2;
+        return Borders.create(topBottom, leftRight);
+    }
+    Borders.fromInset = fromInset;
     function scale(borders, scale) {
         const { x: scaleX, y: scaleY } = scale_1.default.forceXY(scale);
         return {
