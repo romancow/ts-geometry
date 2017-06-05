@@ -1,4 +1,5 @@
 import Utilities from './utilities'
+import Size from './size'
 
 type Scale = number | {
 	x: number
@@ -13,6 +14,13 @@ namespace Scale {
 	export function invert(scale: Scale): Scale {
 		return Utilities.isNumber(scale) ?
 			1/scale : {x: 1/scale.x, y: 1/scale.y}
+	}
+
+	export function calculate(from: Size, to: Size): Scale {
+		return {
+			x: to.width / (from.width || 1),
+			y: to.height / (from.height || 1),
+		}
 	}
 }
 
