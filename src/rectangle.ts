@@ -32,6 +32,13 @@ export default class Rectangle implements Rectangular {
 		return {x: this.left, y: this.top}
 	}
 
+	get center(): Point {
+		return {
+			x: this.left + (this.width / 2),
+			y: this.top + (this.height / 2)
+		}
+	}
+
 	intersect(rect: Rectangular) {
 		return Rectangle.intersect(this, rect)
 	}

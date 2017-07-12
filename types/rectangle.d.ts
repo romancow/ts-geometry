@@ -17,6 +17,7 @@ export default class Rectangle implements Rectangular {
     readonly width: number;
     constructor(props: Rectangular);
     readonly origin: Point;
+    readonly center: Point;
     intersect(rect: Rectangular): Rectangle;
     offset(offset: Size | number): Rectangle;
     inflate(size: Size | number): Rectangle;

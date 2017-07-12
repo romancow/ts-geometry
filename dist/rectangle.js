@@ -15,6 +15,12 @@ class Rectangle {
     get origin() {
         return { x: this.left, y: this.top };
     }
+    get center() {
+        return {
+            x: this.left + (this.width / 2),
+            y: this.top + (this.height / 2)
+        };
+    }
     intersect(rect) {
         return Rectangle.intersect(this, rect);
     }
