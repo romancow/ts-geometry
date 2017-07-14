@@ -6,7 +6,7 @@ export default class BorderedRectangle extends Rectangle {
     private static defaultBorders;
     readonly borders: Borders;
     private _interior;
-    constructor(rect: Rectangular, borders?: Borders);
+    constructor(rect: Rectangular | SVGRect, borders?: Borders);
     readonly interior: Rectangle;
     offset(offset: Size | number): BorderedRectangle;
     inflate(size: Size | number): BorderedRectangle;

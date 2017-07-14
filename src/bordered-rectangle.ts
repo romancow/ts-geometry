@@ -10,7 +10,7 @@ export default class BorderedRectangle extends Rectangle {
 	readonly borders: Borders
 	private _interior: Rectangle
 
-	constructor(rect: Rectangular, borders: Borders = BorderedRectangle.defaultBorders) {
+	constructor(rect: Rectangular | SVGRect, borders: Borders = BorderedRectangle.defaultBorders) {
 		super(rect)
 		this.borders = Utilities.cordon(borders)
 	}

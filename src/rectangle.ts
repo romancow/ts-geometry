@@ -11,6 +11,25 @@ export interface Rectangular extends Size {
 	readonly right?: number
 }
 
+namespace Rectangular {
+	export function isRectangular(obj: any): obj is Rectangular {
+		return ['left', 'top', 'width', 'height'].every((prop) => prop in obj)
+	}
+
+	export function fromSVGRect(svgRect: SVGRect): Rectangular {
+		return {
+			top: svgRect.y,
+			left: svgRect.x,
+			width: svgRect.width,
+			height: svgRect.height
+		}
+	}
+
+	export function ensure(rect: Rectangular | SVGRect) {
+		return Rectangular.isRectangular(rect) ? rect : Rectangular.fromSVGRect(rect)
+	}
+}
+
 export default class Rectangle implements Rectangular {
 	readonly bottom: number
 	readonly height: number
@@ -19,13 +38,14 @@ export default class Rectangle implements Rectangular {
 	readonly top: number
 	readonly width: number
 
-	constructor(props: Rectangular) {
-		this.top = props.top
-		this.left = props.left
-		this.width = props.width
-		this.height = props.height
-		this.right = Rectangle.calcRight(props)
-		this.bottom = Rectangle.calcBottom(props)
+	constructor(props: Rectangular | SVGRect) {
+		const rect = Rectangular.ensure(props)
+		this.top = rect.top
+		this.left = rect.left
+		this.width = rect.width
+		this.height = rect.height
+		this.right = Rectangle.calcRight(rect)
+		this.bottom = Rectangle.calcBottom(rect)
 	}
 
 	get origin(): Point {

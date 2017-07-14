@@ -15,7 +15,7 @@ export default class Rectangle implements Rectangular {
     readonly right: number;
     readonly top: number;
     readonly width: number;
-    constructor(props: Rectangular);
+    constructor(props: Rectangular | SVGRect);
     readonly origin: Point;
     readonly center: Point;
     intersect(rect: Rectangular): Rectangle;

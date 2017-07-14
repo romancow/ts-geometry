@@ -3,14 +3,35 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const utilities_1 = require("./utilities");
 const size_1 = require("./size");
 const scale_1 = require("./scale");
+var Rectangular;
+(function (Rectangular) {
+    function isRectangular(obj) {
+        return ['left', 'top', 'width', 'height'].every((prop) => prop in obj);
+    }
+    Rectangular.isRectangular = isRectangular;
+    function fromSVGRect(svgRect) {
+        return {
+            top: svgRect.y,
+            left: svgRect.x,
+            width: svgRect.width,
+            height: svgRect.height
+        };
+    }
+    Rectangular.fromSVGRect = fromSVGRect;
+    function ensure(rect) {
+        return Rectangular.isRectangular(rect) ? rect : Rectangular.fromSVGRect(rect);
+    }
+    Rectangular.ensure = ensure;
+})(Rectangular || (Rectangular = {}));
 class Rectangle {
     constructor(props) {
-        this.top = props.top;
-        this.left = props.left;
-        this.width = props.width;
-        this.height = props.height;
-        this.right = Rectangle.calcRight(props);
-        this.bottom = Rectangle.calcBottom(props);
+        const rect = Rectangular.ensure(props);
+        this.top = rect.top;
+        this.left = rect.left;
+        this.width = rect.width;
+        this.height = rect.height;
+        this.right = Rectangle.calcRight(rect);
+        this.bottom = Rectangle.calcBottom(rect);
     }
     get origin() {
         return { x: this.left, y: this.top };
