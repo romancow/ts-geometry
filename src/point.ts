@@ -1,3 +1,4 @@
+import Utilities from './utilities'
 import Size from './size'
 
 type Point = {
@@ -10,6 +11,14 @@ namespace Point {
 		return {
 			width: point2.x - point1.x,
 			height: point2.y - point1.y
+		}
+	}
+
+	export function offset(point: Point, offset: Size | number): Point {
+		const size = Utilities.ensureSize(offset)
+		return {
+			x: point.x + size.width,
+			y: point.y + size.height 
 		}
 	}
 }

@@ -30,9 +30,9 @@ export default class Rectangle implements Rectangular {
     static scale(rect: Rectangular, scale: Scale): Rectangle;
     static round(rect: Rectangular, precision?: number): Rectangle;
     static from(origin: Point, size: Size | number): Rectangle;
+    static fromSVGRect(svgRect: SVGRect): Rectangle;
     static center(center: Point, size: Size | number): Rectangle;
     private static calcRight(rect);
     private static calcBottom(rect);
-    private static ensureSize(size);
 }
 import BorderedRectangle from './bordered-rectangle';

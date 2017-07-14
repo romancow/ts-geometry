@@ -1,4 +1,4 @@
-declare var _default: {
+declare const Utilities: {
     isNumber: (obj: Object) => obj is number;
     cordon: <T>(obj: T) => Readonly<{} & T>;
     selectMap: <T, U>(obj: {
@@ -7,5 +7,7 @@ declare var _default: {
         [key: string]: U;
     };
     round: (value: number, precision?: number) => number;
+    ensureSize: (size: number | Size) => Size;
 };
-export default _default;
+export default Utilities;
+import Size from './size';

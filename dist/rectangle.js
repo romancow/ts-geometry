@@ -2,6 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 const utilities_1 = require("./utilities");
 const size_1 = require("./size");
+const point_1 = require("./point");
 const scale_1 = require("./scale");
 var Rectangular;
 (function (Rectangular) {
@@ -9,17 +10,8 @@ var Rectangular;
         return ['left', 'top', 'width', 'height'].every((prop) => prop in obj);
     }
     Rectangular.isRectangular = isRectangular;
-    function fromSVGRect(svgRect) {
-        return {
-            top: svgRect.y,
-            left: svgRect.x,
-            width: svgRect.width,
-            height: svgRect.height
-        };
-    }
-    Rectangular.fromSVGRect = fromSVGRect;
     function ensure(rect) {
-        return Rectangular.isRectangular(rect) ? rect : Rectangular.fromSVGRect(rect);
+        return Rectangular.isRectangular(rect) ? rect : Rectangle.fromSVGRect(rect);
     }
     Rectangular.ensure = ensure;
 })(Rectangular || (Rectangular = {}));
@@ -69,14 +61,9 @@ class Rectangle {
         return new Rectangle({ top: top, left: left, width: right - left, height: bottom - top });
     }
     static offset(rect, offset) {
-        const { width, height } = utilities_1.default.isNumber(offset) ?
-            { width: offset, height: offset } : offset;
-        return new Rectangle({
-            top: rect.top + height,
-            left: rect.left + width,
-            width: rect.width,
-            height: rect.height
-        });
+        const size = utilities_1.default.ensureSize(offset);
+        const origin = point_1.default.offset({ x: rect.left, y: rect.top }, size);
+        return Rectangle.from(origin, rect);
     }
     static inflate(rect, size) {
         const { width, height } = utilities_1.default.isNumber(size) ?
@@ -104,7 +91,7 @@ class Rectangle {
         return new Rectangle(rounded);
     }
     static from(origin, size) {
-        const { width, height } = this.ensureSize(size);
+        const { width, height } = utilities_1.default.ensureSize(size);
         return new Rectangle({
             left: origin.x + Math.min(width, 0),
             top: origin.y + Math.min(height, 0),
@@ -112,8 +99,11 @@ class Rectangle {
             height: Math.abs(height)
         });
     }
+    static fromSVGRect(svgRect) {
+        return Rectangle.from(svgRect, svgRect);
+    }
     static center(center, size) {
-        const { width, height } = size_1.default.abs(this.ensureSize(size));
+        const { width, height } = size_1.default.abs(utilities_1.default.ensureSize(size));
         return new Rectangle({
             left: center.x - (width / 2),
             top: center.y - (height / 2),
@@ -126,9 +116,6 @@ class Rectangle {
     }
     static calcBottom(rect) {
         return (rect.bottom != null) ? rect.bottom : rect.top + rect.height;
-    }
-    static ensureSize(size) {
-        return utilities_1.default.isNumber(size) ? { width: size, height: size } : size;
     }
 }
 exports.default = Rectangle;

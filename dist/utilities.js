@@ -7,7 +7,7 @@ function isClass(obj, className) {
         (type === 'object') &&
             (strFn.call(obj) === `[object ${className}]`);
 }
-exports.default = {
+const Utilities = {
     isNumber: function (obj) {
         return isClass(obj, 'number');
     },
@@ -28,6 +28,10 @@ exports.default = {
         if (precision < 0)
             multiplier = 1 / multiplier;
         return Math.round(value * multiplier) / multiplier;
+    },
+    ensureSize: function (size) {
+        return Utilities.isNumber(size) ? { width: size, height: size } : size;
     }
 };
+exports.default = Utilities;
 //# sourceMappingURL=utilities.js.map

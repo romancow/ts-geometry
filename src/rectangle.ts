@@ -16,17 +16,8 @@ namespace Rectangular {
 		return ['left', 'top', 'width', 'height'].every((prop) => prop in obj)
 	}
 
-	export function fromSVGRect(svgRect: SVGRect): Rectangular {
-		return {
-			top: svgRect.y,
-			left: svgRect.x,
-			width: svgRect.width,
-			height: svgRect.height
-		}
-	}
-
 	export function ensure(rect: Rectangular | SVGRect) {
-		return Rectangular.isRectangular(rect) ? rect : Rectangular.fromSVGRect(rect)
+		return Rectangular.isRectangular(rect) ? rect : Rectangle.fromSVGRect(rect)
 	}
 }
 
@@ -93,14 +84,9 @@ export default class Rectangle implements Rectangular {
 	}
 
 	static offset(rect: Rectangular, offset: Size | number) {
-		const {width, height} = Utilities.isNumber(offset) ?
-			{width: offset, height: offset} : offset
-		return new Rectangle({
-			top: rect.top + height, 
-			left: rect.left + width, 
-			width: rect.width,
-			height: rect.height
-		})
+		const size = Utilities.ensureSize(offset)
+		const origin = Point.offset({ x: rect.left, y: rect.top }, size)
+		return Rectangle.from(origin, rect)
 	}
 
 	static inflate(rect: Rectangular, size: Size | number) {
@@ -132,7 +118,7 @@ export default class Rectangle implements Rectangular {
 	}
 	
 	static from(origin: Point, size: Size | number) {
-		const {width, height} = this.ensureSize(size)
+		const {width, height} = Utilities.ensureSize(size)
 		return new Rectangle({
 			left: origin.x + Math.min(width, 0),
 			top: origin.y + Math.min(height, 0),
@@ -141,8 +127,12 @@ export default class Rectangle implements Rectangular {
 		})
 	}
 
+	static fromSVGRect(svgRect: SVGRect): Rectangle {
+		return Rectangle.from(svgRect, svgRect)
+	}
+
 	static center(center: Point, size: Size | number) {
-		const {width, height} = Size.abs(this.ensureSize(size))
+		const {width, height} = Size.abs(Utilities.ensureSize(size))
 		return new Rectangle({
 			left: center.x - (width / 2),
 			top: center.y - (height / 2),
@@ -157,10 +147,6 @@ export default class Rectangle implements Rectangular {
 
 	private static calcBottom(rect: Rectangular) {
 		return (rect.bottom != null) ? rect.bottom : rect.top + rect.height	
-	}
-
-	private static ensureSize(size: Size | number) {
-		return Utilities.isNumber(size) ? {width: size, height: size} : size
 	}
 }
 

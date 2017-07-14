@@ -6,7 +6,7 @@ function isClass(obj: Object, className: string) {
 		   (strFn.call(obj) === `[object ${className}]`)
 }
 
-export default {
+const Utilities = {
 
 	/* Object utility methods */
 
@@ -34,5 +34,15 @@ export default {
 		let multiplier = Math.pow(10, Math.abs(precision || 0))
 		if (precision < 0) multiplier = 1 / multiplier
 		return Math.round(value * multiplier) / multiplier
+	},
+
+	/* Size utility methods */
+
+	ensureSize: function(size: Size | number) {
+		return Utilities.isNumber(size) ? { width: size, height: size } : size
 	}
 }
+
+export default Utilities
+
+import Size from './size'
