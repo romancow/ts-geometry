@@ -1,9 +1,10 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-const scale_1 = require("./scale");
+var scale_1 = require("./scale");
 var Borders;
 (function (Borders) {
-    function create(topBottom, leftRight = topBottom) {
+    function create(topBottom, leftRight) {
+        if (leftRight === void 0) { leftRight = topBottom; }
         return {
             top: topBottom,
             right: leftRight,
@@ -13,13 +14,13 @@ var Borders;
     }
     Borders.create = create;
     function fromInset(outer, inner) {
-        const topBottom = (outer.height - inner.height) / 2;
-        const leftRight = (outer.width - inner.width) / 2;
+        var topBottom = (outer.height - inner.height) / 2;
+        var leftRight = (outer.width - inner.width) / 2;
         return Borders.create(topBottom, leftRight);
     }
     Borders.fromInset = fromInset;
     function scale(borders, scale) {
-        const { x: scaleX, y: scaleY } = scale_1.default.forceXY(scale);
+        var _a = scale_1.default.forceXY(scale), scaleX = _a.x, scaleY = _a.y;
         return {
             top: borders.top * scaleY,
             right: borders.right * scaleX,

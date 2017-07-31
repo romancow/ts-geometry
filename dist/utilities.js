@@ -1,30 +1,38 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 function isClass(obj, className) {
-    const type = typeof obj;
-    const strFn = Object.prototype.toString;
+    var type = typeof obj;
+    var strFn = Object.prototype.toString;
     return (type === className) ||
         (type === 'object') &&
-            (strFn.call(obj) === `[object ${className}]`);
+            (strFn.call(obj) === "[object " + className + "]");
 }
-const Utilities = {
+var Utilities = {
     isNumber: function (obj) {
         return isClass(obj, 'number');
     },
     cordon: function (obj) {
-        return Object.freeze(Object.assign({}, obj));
+        var clone = new Object();
+        if (obj != null) {
+            for (var key in obj) {
+                if (Object.prototype.hasOwnProperty.call(obj, key))
+                    clone[key] = obj[key];
+            }
+        }
+        return Object.freeze(clone);
     },
     selectMap: function (obj, select, map) {
-        const result = {};
-        select.forEach((key, index) => {
-            const mapped = map(obj[key], key, index);
+        var result = {};
+        select.forEach(function (key, index) {
+            var mapped = map(obj[key], key, index);
             if (mapped !== undefined)
                 result[key] = mapped;
         });
         return result;
     },
-    round: function (value, precision = 0) {
-        let multiplier = Math.pow(10, Math.abs(precision || 0));
+    round: function (value, precision) {
+        if (precision === void 0) { precision = 0; }
+        var multiplier = Math.pow(10, Math.abs(precision || 0));
         if (precision < 0)
             multiplier = 1 / multiplier;
         return Math.round(value * multiplier) / multiplier;

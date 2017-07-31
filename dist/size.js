@@ -1,13 +1,13 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-const utilities_1 = require("./utilities");
-const scale_1 = require("./scale");
+var utilities_1 = require("./utilities");
+var scale_1 = require("./scale");
 var Size;
 (function (Size) {
     function scale(size, scale) {
-        const { width, height } = utilities_1.default.isNumber(size) ?
-            { width: size, height: size } : size;
-        const { x: scaleX, y: scaleY } = scale_1.default.forceXY(scale);
+        var _a = utilities_1.default.isNumber(size) ?
+            { width: size, height: size } : size, width = _a.width, height = _a.height;
+        var _b = scale_1.default.forceXY(scale), scaleX = _b.x, scaleY = _b.y;
         return {
             width: width * scaleX,
             height: height * scaleY
