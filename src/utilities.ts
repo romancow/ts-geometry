@@ -14,8 +14,16 @@ const Utilities = {
 		return isClass(obj, 'number')
 	},
 
-	cordon: function <T>(obj: T) {
-		return Object.freeze(Object.assign({}, obj))
+	cordon: function(obj: Object) {
+		const clone: any = new Object()
+		if (obj != null) {
+			for (var key in obj) {
+				// Avoid bugs when hasOwnProperty is shadowed
+          		if (Object.prototype.hasOwnProperty.call(obj, key))
+					  clone[key] = (obj as any)[key]
+			}
+		}
+		return Object.freeze(clone)
 	},
 
 	selectMap: function <T, U>(obj: {[key: string]: T}, select: string[], map: (val:T, key:string, index:number) => U) {
