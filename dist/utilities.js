@@ -11,14 +11,19 @@ var Utilities = {
     isNumber: function (obj) {
         return isClass(obj, 'number');
     },
-    cordon: function (obj) {
-        var clone = new Object();
-        if (obj != null) {
-            for (var key in obj) {
-                if (Object.prototype.hasOwnProperty.call(obj, key))
-                    clone[key] = obj[key];
-            }
+    merge: function (target, source) {
+        var obj = new Object(target);
+        if (source != null) {
+            var indexObj_1 = obj;
+            var indexSrc_1 = source;
+            Object.keys(source).forEach(function (key) { return indexObj_1[key] = indexSrc_1[key]; });
         }
+        return obj;
+    },
+    cordon: function (obj) {
+        if (Object.isFrozen(obj))
+            return obj;
+        var clone = Utilities.merge(null, obj);
         return Object.freeze(clone);
     },
     selectMap: function (obj, select, map) {

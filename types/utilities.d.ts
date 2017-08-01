@@ -1,6 +1,7 @@
 declare const Utilities: {
     isNumber: (obj: Object) => obj is number;
-    cordon: (obj: Object) => any;
+    merge: <T, S>(target: T | null, source: S) => T & S;
+    cordon: <T>(obj: T) => T;
     selectMap: <T, U>(obj: {
         [key: string]: T;
     }, select: string[], map: (val: T, key: string, index: number) => U) => {
