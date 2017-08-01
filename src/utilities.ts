@@ -14,8 +14,22 @@ const Utilities = {
 		return isClass(obj, 'number')
 	},
 
-	cordon: function <T>(obj: T) {
-		return Object.freeze(Object.assign({}, obj))
+	merge: function<T, S>(target: T | null, source: S) {
+		const obj = new Object(target) as T & S
+		if (source != null) {
+			const indexObj = obj as { [key: string]: any }
+			const indexSrc = source as { [key: string]: any }
+			Object.keys(source).forEach(key => indexObj[key] = indexSrc[key])
+		}
+		return obj
+	},
+
+	cordon: function<T>(obj: T) {
+		if (Object.isFrozen(obj))
+			return obj
+			
+		const clone: T = Utilities.merge(null, obj)
+		return Object.freeze(clone)
 	},
 
 	selectMap: function <T, U>(obj: {[key: string]: T}, select: string[], map: (val:T, key:string, index:number) => U) {

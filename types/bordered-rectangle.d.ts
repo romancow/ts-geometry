@@ -4,7 +4,7 @@ import Size from './size';
 import Scale from './scale';
 export default class BorderedRectangle extends Rectangle {
     private static defaultBorders;
-    readonly borders: Borders;
+    readonly borders: Readonly<Borders>;
     private _interior;
     constructor(rect: Rectangular | SVGRect, borders?: Borders);
     readonly interior: Rectangle;

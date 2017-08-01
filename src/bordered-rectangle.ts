@@ -7,7 +7,7 @@ import Utilities from './utilities'
 export default class BorderedRectangle extends Rectangle {
 	private static defaultBorders: Borders = {top: 0, right: 0, bottom: 0, left: 0}
 	
-	readonly borders: Borders
+	readonly borders: Readonly<Borders>
 	private _interior: Rectangle
 
 	constructor(rect: Rectangular | SVGRect, borders: Borders = BorderedRectangle.defaultBorders) {
