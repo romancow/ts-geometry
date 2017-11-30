@@ -22,6 +22,12 @@ namespace Scale {
 			y: to.height / (from.height || 1),
 		}
 	}
+
+	export function equals(scale1: Scale, scale2: Scale) {
+		const {x: x1, y: y1} = Scale.forceXY(scale1)
+		const {x: x2, y: y2} = Scale.forceXY(scale2)
+		return (x1 === x2) && (y1 === y2)
+	}
 }
 
 export default Scale

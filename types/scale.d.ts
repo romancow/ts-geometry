@@ -10,5 +10,6 @@ declare namespace Scale {
     };
     function invert(scale: Scale): Scale;
     function calculate(from: Size, to: Size): Scale;
+    function equals(scale1: Scale, scale2: Scale): boolean;
 }
 export default Scale;

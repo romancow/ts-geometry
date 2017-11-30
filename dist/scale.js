@@ -19,6 +19,12 @@ var Scale;
         };
     }
     Scale.calculate = calculate;
+    function equals(scale1, scale2) {
+        var _a = Scale.forceXY(scale1), x1 = _a.x, y1 = _a.y;
+        var _b = Scale.forceXY(scale2), x2 = _b.x, y2 = _b.y;
+        return (x1 === x2) && (y1 === y2);
+    }
+    Scale.equals = equals;
 })(Scale || (Scale = {}));
 exports.default = Scale;
 //# sourceMappingURL=scale.js.map
