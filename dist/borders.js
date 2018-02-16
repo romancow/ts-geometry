@@ -1,6 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var scale_1 = require("./scale");
+var utilities_1 = require("./utilities");
 var Borders;
 (function (Borders) {
     function create(topBottom, leftRight) {
@@ -29,6 +30,10 @@ var Borders;
         };
     }
     Borders.scale = scale;
+    function equals(borders1, borders2) {
+        return utilities_1.default.propsEqual(borders1, borders2, ['top', 'left', 'bottom', 'right']);
+    }
+    Borders.equals = equals;
 })(Borders || (Borders = {}));
 exports.default = Borders;
 //# sourceMappingURL=borders.js.map

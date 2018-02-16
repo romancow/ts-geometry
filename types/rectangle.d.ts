@@ -29,6 +29,7 @@ export default class Rectangle implements Rectangular {
     static inflate(rect: Rectangular, size: Size | number): Rectangle;
     static scale(rect: Rectangular, scale: Scale): Rectangle;
     static round(rect: Rectangular, precision?: number): Rectangle;
+    static equals(rect1: Rectangle, rect2: Rectangle): boolean;
     static from(origin: Point, size: Size | number): Rectangle;
     static fromSVGRect(svgRect: SVGRect): Rectangle;
     static center(center: Point, size: Size | number): Rectangle;

@@ -51,6 +51,9 @@ var BorderedRectangle = (function (_super) {
         var roundedBorders = utilities_1.default.selectMap(this.borders, select, rounder);
         return new BorderedRectangle(roundedRect, roundedBorders);
     };
+    BorderedRectangle.equals = function (rect1, rect2) {
+        return _super.equals.call(this, rect1, rect2) && borders_1.default.equals(rect1.borders, rect2.borders);
+    };
     BorderedRectangle.addBorders = function (rect, borders) {
         return new BorderedRectangle(BorderedRectangle.applyBorders(rect, borders), borders);
     };
@@ -63,8 +66,8 @@ var BorderedRectangle = (function (_super) {
             height: rect.height + (borders.top + borders.bottom) * multiplier
         };
     };
+    BorderedRectangle.defaultBorders = { top: 0, right: 0, bottom: 0, left: 0 };
     return BorderedRectangle;
 }(rectangle_1.default));
-BorderedRectangle.defaultBorders = { top: 0, right: 0, bottom: 0, left: 0 };
 exports.default = BorderedRectangle;
 //# sourceMappingURL=bordered-rectangle.js.map

@@ -18,6 +18,10 @@ var Point;
         };
     }
     Point.offset = offset;
+    function equals(point1, point2) {
+        return utilities_1.default.propsEqual(point1, point2, ['x', 'y']);
+    }
+    Point.equals = equals;
 })(Point || (Point = {}));
 exports.default = Point;
 //# sourceMappingURL=point.js.map

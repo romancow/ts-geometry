@@ -100,6 +100,9 @@ var Rectangle = (function () {
         var rounded = utilities_1.default.selectMap(rect, select, rounder);
         return new Rectangle(rounded);
     };
+    Rectangle.equals = function (rect1, rect2) {
+        return utilities_1.default.propsEqual(rect1, rect2, ['top', 'left', 'width', 'height']);
+    };
     Rectangle.from = function (origin, size) {
         var _a = utilities_1.default.ensureSize(size), width = _a.width, height = _a.height;
         return new Rectangle({

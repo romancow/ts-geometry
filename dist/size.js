@@ -21,6 +21,27 @@ var Size;
         };
     }
     Size.abs = abs;
+    function equals(size1, size2) {
+        return utilities_1.default.propsEqual(size1, size2, ['width', 'height']);
+    }
+    Size.equals = equals;
+    function diff(size1, size2) {
+        return {
+            width: size2.width - size1.width,
+            height: size2.height - size1.height
+        };
+    }
+    Size.diff = diff;
+    function max(size1, size2) {
+        var props = ['width', 'height'];
+        if (props.every(function (p) { return size1[p] >= size2[p]; }))
+            return size1;
+        else if (props.every(function (p) { return size1[p] <= size2[p]; }))
+            return size2;
+        else
+            return utilities_1.default.mapToObject(props, function (p) { return Math.max(size1[p], size2[p]); });
+    }
+    Size.max = max;
 })(Size || (Size = {}));
 exports.default = Size;
 //# sourceMappingURL=size.js.map

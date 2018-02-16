@@ -35,12 +35,24 @@ var Utilities = {
         });
         return result;
     },
+    propsEqual: function (obj1, obj2, props) {
+        return props.every(function (prop) { return obj1[prop] === obj2[prop]; });
+    },
     round: function (value, precision) {
         if (precision === void 0) { precision = 0; }
         var multiplier = Math.pow(10, Math.abs(precision || 0));
         if (precision < 0)
             multiplier = 1 / multiplier;
         return Math.round(value * multiplier) / multiplier;
+    },
+    mapToObject: function (keys, map) {
+        var obj = {};
+        keys.forEach(function (k) {
+            var val = map(k);
+            if (val !== undefined)
+                obj[k] = val;
+        });
+        return obj;
     },
     ensureSize: function (size) {
         return Utilities.isNumber(size) ? { width: size, height: size } : size;

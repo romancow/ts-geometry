@@ -12,6 +12,7 @@ export default class BorderedRectangle extends Rectangle {
     inflate(size: Size | number): BorderedRectangle;
     scale(scale: Scale): BorderedRectangle;
     round(precision?: number): BorderedRectangle;
+    static equals(rect1: BorderedRectangle, rect2: BorderedRectangle): boolean;
     static addBorders(rect: Rectangular, borders: Borders): BorderedRectangle;
     private static applyBorders(rect, borders, multiplier?);
 }
