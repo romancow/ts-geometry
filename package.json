@@ -29,6 +29,6 @@
   },
   "homepage": "https://github.com/romancow/ts-geometry",
   "devDependencies": {
-    "typescript": "^2.2.2"
+    "typescript": "^2.7.2"
   }
 }
