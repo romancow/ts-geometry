@@ -6,7 +6,7 @@ import Utilities from './utilities'
 
 export default class BorderedRectangle extends Rectangle {
 	private static defaultBorders: Borders = {top: 0, right: 0, bottom: 0, left: 0}
-	
+
 	readonly borders: Readonly<Borders>
 	private _interior: Rectangle
 
@@ -43,6 +43,10 @@ export default class BorderedRectangle extends Rectangle {
 		const rounder = (val: number) => Utilities.round(val, precision)
 		const roundedBorders = <Borders> Utilities.selectMap(this.borders, select, rounder)
 		return new BorderedRectangle(roundedRect, roundedBorders)
+	}
+
+	static equals(rect1: BorderedRectangle, rect2: BorderedRectangle) {
+		return super.equals(rect1, rect2) && Borders.equals(rect1.borders, rect2.borders)
 	}
 
 	static addBorders(rect: Rectangular, borders: Borders) {

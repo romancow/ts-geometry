@@ -23,6 +23,10 @@ namespace Size {
 			height: Math.abs(size.height)
 		}
 	}
+
+	export function equals(size1: Size, size2: Size): boolean {
+		return Utilities.propsEqual(size1, size2, ['width', 'height'])
+	}
 }
 
 export default Size

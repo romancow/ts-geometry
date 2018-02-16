@@ -42,6 +42,10 @@ const Utilities = {
 		return result
 	},
 
+	propsEqual<T>(obj1: T, obj2: T, props: (keyof T)[]) {
+		return props.every(prop => obj1[prop] === obj2[prop])
+	},
+
 	/* Number utility methods */
 
 	round(value: number, precision: number = 0) {

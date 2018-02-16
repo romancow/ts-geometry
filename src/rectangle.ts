@@ -93,8 +93,8 @@ export default class Rectangle implements Rectangular {
 		const {width, height} = Utilities.isNumber(size) ?
 			{width: size, height: size} : size
 		return new Rectangle({
-			top: rect.top, 
-			left: rect.left, 
+			top: rect.top,
+			left: rect.left,
 			width: rect.width + width,
 			height: rect.height + height
 		})
@@ -116,7 +116,11 @@ export default class Rectangle implements Rectangular {
 		const rounded = Utilities.selectMap(<any>rect, select, rounder)
 		return new Rectangle(<Rectangular> <any> rounded)
 	}
-	
+
+	static equals(rect1: Rectangle, rect2: Rectangle) {
+		return Utilities.propsEqual(rect1, rect2, ['top', 'left', 'width', 'height'])
+	}
+
 	static from(origin: Point, size: Size | number) {
 		const {width, height} = Utilities.ensureSize(size)
 		return new Rectangle({
@@ -146,7 +150,7 @@ export default class Rectangle implements Rectangular {
 	}
 
 	private static calcBottom(rect: Rectangular) {
-		return (rect.bottom != null) ? rect.bottom : rect.top + rect.height	
+		return (rect.bottom != null) ? rect.bottom : rect.top + rect.height
 	}
 }
 

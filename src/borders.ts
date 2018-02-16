@@ -1,5 +1,6 @@
 import Scale from './scale'
 import Size from './size'
+import Utilities from './utilities';
 
 type Borders = {
 	top: number
@@ -32,6 +33,10 @@ namespace Borders {
 			bottom: borders.bottom * scaleY,
 			left: borders.left * scaleX
 		}
+	}
+
+	export function equals(borders1: Borders, borders2: Borders) {
+		return Utilities.propsEqual(borders1, borders2, ['top', 'left', 'bottom', 'right'])
 	}
 }
 
