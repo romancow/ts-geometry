@@ -54,6 +54,18 @@ const Utilities = {
 		return Math.round(value * multiplier) / multiplier
 	},
 
+	/* Array utility methods */
+
+	mapToObject<T extends {}, K extends keyof T>(keys: K[], map: (key: K) => T[K]): T {
+		const obj = <T>{}
+		keys.forEach(k => {
+			const val = map(k)
+			if (val !== undefined)
+				obj[k] = val
+		})
+		return obj
+	},
+
 	/* Size utility methods */
 
 	ensureSize(size: Size | number) {
