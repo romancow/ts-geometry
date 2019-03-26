@@ -1,14 +1,17 @@
 # node & npm related stuff
 node_modules/
-node_modules
 .nvmrc
 
-# ignore error logs
+# Logs
+logs
+*.log
 npm-debug.log*
-yarn-error.log
+yarn-debug.log*
+yarn-error.log*
 
-# ignore anything in the temp folder
+# anything in the temp folder
 tmp/
 
-# ignore Visual Studio Code settings
-.vscode/
+# built files
+dist/
+types/

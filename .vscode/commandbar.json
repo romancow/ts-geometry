@@ -1,0 +1,19 @@
+{
+	"skipTerminateQuickPick": true,
+	"skipSwitchToOutput": false,
+	"skipErrorMessage": true,
+	"commands": [
+		{
+			"text": "$(beaker) Test",
+			"tooltip": "Run Unit Tests",
+			"commandType": "palette",
+			"command": "workbench.action.tasks.test"
+		},
+		{
+			"text": "$(tools) Build",
+			"tooltip": "Run Build Task",
+			"commandType": "palette",
+			"command": "workbench.action.tasks.build"
+		}
+	]
+}

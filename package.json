@@ -11,7 +11,9 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "tsc"
+    "clear": "rm -rf ./dist/* ./types/*",
+    "build": "npm run clear && tsc",
+    "prepare": "tsc"
   },
   "repository": {
     "type": "git",
