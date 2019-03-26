@@ -25,6 +25,8 @@ namespace Point {
 	export function equals(point1: Point, point2: Point): boolean {
 		return Utilities.propsEqual(point1, point2, ['x', 'y'])
 	}
+
+	export const Zero: Point = Object.freeze({ x: 0, y: 0 })
 }
 
 export default Point

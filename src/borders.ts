@@ -38,6 +38,8 @@ namespace Borders {
 	export function equals(borders1: Borders, borders2: Borders) {
 		return Utilities.propsEqual(borders1, borders2, ['top', 'left', 'bottom', 'right'])
 	}
+
+	export const None: Borders = Object.freeze(create(0, 0))
 }
 
 export default Borders

@@ -43,6 +43,8 @@ namespace Size {
 			return size2
 		else return Utilities.mapToObject(props, p => Math.max(size1[p], size2[p]))
 	}
+
+	export const Zero: Size = Object.freeze({ width: 0, height: 0 })
 }
 
 export default Size
