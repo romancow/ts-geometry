@@ -1,36 +1,41 @@
 {
-  "name": "ts-geometry",
-  "version": "1.1.1",
-  "description": "Helpful types and methods for working with basic coordinate geometry",
-  "copyright": "Data Concepts, Inc.",
-  "private": true,
-  "main": "dist/index.js",
-  "types": "types/index.d.ts",
-  "engines": {
-    "node": "*"
-  },
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "clear": "rm -rf ./dist/* ./types/*",
-    "build": "npm run clear && tsc",
-    "prepare": "tsc"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/romancow/ts-geometry.git"
-  },
-  "author": {
-    "name": "Sean Wilson",
-    "email": "scw@adque.com",
-    "url": "http://seanwilson.me"
-  },
-  "license": "MIT",
-  "licenseUrl": "https://raw.githubusercontent.com/romancow/ts-geometry/master/LICENSE.txt",
-  "bugs": {
-    "url": "https://github.com/romancow/ts-geometry/issues"
-  },
-  "homepage": "https://github.com/romancow/ts-geometry",
-  "devDependencies": {
-    "typescript": "^2.7.2"
-  }
+	"name": "@romancow/ts-geometry",
+	"version": "1.1.1",
+	"description": "Helpful types and methods for working with basic coordinate geometry",
+	"main": "umd/index.js",
+	"module": "es6/index.js",
+	"types": "types/index.d.ts",
+	"files": [
+		"es6/*.js",
+		"umd/*.js",
+		"types/"
+	],
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1",
+		"clean": "rimraf ./es6/* ./umd/* ./types/*",
+		"build:es6": "tsc -p .",
+		"build:umd": "rollup -c",
+		"prebuild": "npm run clean",
+		"build": "npm run build:es6 && npm run build:umd",
+		"prepare": "npm run build"
+	},
+	"repository": "git://github.com/romancow/ts-geometry.git",
+	"publishConfig": {
+		"registry": "https://npm.pkg.github.com/"
+	},
+	"author": {
+		"name": "Sean Wilson",
+		"email": "scw@adque.com"
+	},
+	"license": "MIT",
+	"licenseUrl": "https://raw.githubusercontent.com/romancow/ts-geometry/master/LICENSE.txt",
+	"bugs": {
+		"url": "https://github.com/romancow/ts-geometry/issues"
+	},
+	"homepage": "https://github.com/romancow/ts-geometry",
+	"devDependencies": {
+		"rimraf": "^3.0.0",
+		"rollup": "^1.25.1",
+		"typescript": "^3.6.4"
+	}
 }

@@ -13,5 +13,6 @@ yarn-error.log*
 tmp/
 
 # built files
-dist/
+es6/
+umd/
 types/

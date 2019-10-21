@@ -1,20 +1,19 @@
 {
-    "compilerOptions": {
+	"compilerOptions": {
 		"declaration": true,
-        "declarationDir": "./types",
-		"experimentalDecorators": true,
-        "module": "commonjs",
-        "noImplicitAny": true,
-        "noImplicitReturns": false,
-		"noImplicitThis": true,
+		"declarationDir": "./types",
+		"sourceMap": true,
+		"module": "es6",
+		"moduleResolution": "node",
+		"strict": true,
+		"noImplicitAny": true,
+		"noImplicitReturns": true,
 		"noUnusedLocals": true,
-        "outDir": "./dist",
-        "removeComments": true,
-        "sourceMap": true,
-		"strictNullChecks": true,
-		"target": "es5"
-    },
-    "include": [
-        "src/**/*"
-    ]
+		"removeComments": true,
+		"target": "es5",
+		"outDir": "./es6"
+	},
+	"include": [
+		"src/**/*"
+	]
 }

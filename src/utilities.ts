@@ -14,7 +14,7 @@ const Utilities = {
 		return isClass(obj, 'number')
 	},
 
-	merge<T, S>(target: T | null, source: S) {
+	merge<T extends object, S extends object>(target: T | null, source: S) {
 		const obj = new Object(target) as T & S
 		if (source != null) {
 			const indexObj = obj as { [key: string]: any }
@@ -24,7 +24,7 @@ const Utilities = {
 		return obj
 	},
 
-	cordon<T>(obj: T) {
+	cordon<T extends object>(obj: T) {
 		if (Object.isFrozen(obj))
 			return obj
 
