@@ -11,9 +11,10 @@
 	],
 	"scripts": {
 		"test": "echo \"Error: no test specified\" && exit 1",
-		"clear": "rm -rf ./dist/* ./types/*",
-		"build": "npm run clear && tsc",
-		"prepare": "tsc"
+		"clean": "rimraf ./es6/* ./types/*",
+		"prebuild": "npm run clean",
+		"build": "tsc -p .",
+		"prepare": "npm run build"
 	},
 	"repository": "git://github.com/romancow/ts-geometry.git",
 	"publishConfig": {
@@ -30,6 +31,7 @@
 	},
 	"homepage": "https://github.com/romancow/ts-geometry",
 	"devDependencies": {
+		"rimraf": "^3.0.0",
 		"typescript": "^3.6.4"
 	}
 }
