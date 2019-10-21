@@ -1,36 +1,31 @@
 {
-  "name": "ts-geometry",
-  "version": "1.1.1",
-  "description": "Helpful types and methods for working with basic coordinate geometry",
-  "copyright": "Data Concepts, Inc.",
-  "private": true,
-  "main": "dist/index.js",
-  "types": "types/index.d.ts",
-  "engines": {
-    "node": "*"
-  },
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "clear": "rm -rf ./dist/* ./types/*",
-    "build": "npm run clear && tsc",
-    "prepare": "tsc"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/romancow/ts-geometry.git"
-  },
-  "author": {
-    "name": "Sean Wilson",
-    "email": "scw@adque.com",
-    "url": "http://seanwilson.me"
-  },
-  "license": "MIT",
-  "licenseUrl": "https://raw.githubusercontent.com/romancow/ts-geometry/master/LICENSE.txt",
-  "bugs": {
-    "url": "https://github.com/romancow/ts-geometry/issues"
-  },
-  "homepage": "https://github.com/romancow/ts-geometry",
-  "devDependencies": {
-    "typescript": "^2.7.2"
-  }
+	"name": "ts-geometry",
+	"version": "1.1.1",
+	"description": "Helpful types and methods for working with basic coordinate geometry",
+	"main": "dist/index.js",
+	"types": "types/index.d.ts",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1",
+		"clear": "rm -rf ./dist/* ./types/*",
+		"build": "npm run clear && tsc",
+		"prepare": "tsc"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/romancow/ts-geometry.git"
+	},
+	"author": {
+		"name": "Sean Wilson",
+		"email": "scw@adque.com",
+		"url": "http://seanwilson.me"
+	},
+	"license": "MIT",
+	"licenseUrl": "https://raw.githubusercontent.com/romancow/ts-geometry/master/LICENSE.txt",
+	"bugs": {
+		"url": "https://github.com/romancow/ts-geometry/issues"
+	},
+	"homepage": "https://github.com/romancow/ts-geometry",
+	"devDependencies": {
+		"typescript": "^2.7.2"
+	}
 }
