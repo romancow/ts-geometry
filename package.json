@@ -1,8 +1,8 @@
 {
 	"name": "@romancow/ts-geometry",
-	"version": "1.1.1",
+	"version": "1.1.2",
 	"description": "Helpful types and methods for working with basic coordinate geometry",
-	"main": "umd/index.js",
+	"main": "umd/ts-geometry.js",
 	"module": "es6/index.js",
 	"types": "types/index.d.ts",
 	"files": [
