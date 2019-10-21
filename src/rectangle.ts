@@ -3,6 +3,7 @@ import Size from './size'
 import Point from './point'
 import Scale from './scale'
 import Borders from './borders'
+import BorderedRectangle from './bordered-rectangle'
 
 export interface Rectangular extends Size {
 	readonly left: number
@@ -153,5 +154,3 @@ export default class Rectangle implements Rectangular {
 		return (rect.bottom != null) ? rect.bottom : rect.top + rect.height
 	}
 }
-
-import BorderedRectangle from './bordered-rectangle'

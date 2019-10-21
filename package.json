@@ -2,18 +2,21 @@
 	"name": "@romancow/ts-geometry",
 	"version": "1.1.1",
 	"description": "Helpful types and methods for working with basic coordinate geometry",
-	"main": "es6/index.js",
+	"main": "umd/index.js",
 	"module": "es6/index.js",
 	"types": "types/index.d.ts",
 	"files": [
 		"es6/*.js",
+		"umd/*.js",
 		"types/"
 	],
 	"scripts": {
 		"test": "echo \"Error: no test specified\" && exit 1",
-		"clean": "rimraf ./es6/* ./types/*",
+		"clean": "rimraf ./es6/* ./umd/* ./types/*",
+		"build:es6": "tsc -p .",
+		"build:umd": "rollup -c",
 		"prebuild": "npm run clean",
-		"build": "tsc -p .",
+		"build": "npm run build:es6 && npm run build:umd",
 		"prepare": "npm run build"
 	},
 	"repository": "git://github.com/romancow/ts-geometry.git",
@@ -32,6 +35,7 @@
 	"homepage": "https://github.com/romancow/ts-geometry",
 	"devDependencies": {
 		"rimraf": "^3.0.0",
+		"rollup": "^1.25.1",
 		"typescript": "^3.6.4"
 	}
 }
