@@ -4,6 +4,10 @@
 	"description": "Helpful types and methods for working with basic coordinate geometry",
 	"main": "dist/index.js",
 	"types": "types/index.d.ts",
+	"files": [
+		"dist/*.js",
+		"types/"
+	],
 	"scripts": {
 		"test": "echo \"Error: no test specified\" && exit 1",
 		"clear": "rm -rf ./dist/* ./types/*",
