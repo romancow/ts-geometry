@@ -2,10 +2,11 @@
 	"name": "@romancow/ts-geometry",
 	"version": "1.1.1",
 	"description": "Helpful types and methods for working with basic coordinate geometry",
-	"main": "dist/index.js",
+	"main": "es6/index.js",
+	"module": "es6/index.js",
 	"types": "types/index.d.ts",
 	"files": [
-		"dist/*.js",
+		"es6/*.js",
 		"types/"
 	],
 	"scripts": {
