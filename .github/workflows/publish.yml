@@ -11,13 +11,16 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v1
-      - uses: actions/setup-node@v1
+      - name: Checkout Code
+        uses: actions/checkout@v1
+      - name: Use Node
+        uses: actions/setup-node@v1
         with:
           node-version: 12
           registry-url: 'https://npm.pkg.github.com'
-      - run: npm install -g yarn
-      - run: yarn install
-      - run: yarn publish
+      - name: Install Dependencies & Build
+        run: npm ci
+      - name: Publish Release
+        run: npm publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
