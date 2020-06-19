@@ -1,5 +1,5 @@
 # node & npm related stuff
-node_modules/
+/node_modules
 .nvmrc
 
 # Logs
@@ -12,7 +12,10 @@ yarn-error.log*
 # anything in the temp folder
 tmp/
 
+# nosync
+/.nosync
+
 # built files
-es6/
-umd/
-types/
+/es6
+/umd
+/types
