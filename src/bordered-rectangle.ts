@@ -45,6 +45,11 @@ export default class BorderedRectangle extends Rectangle {
 		return new BorderedRectangle(roundedRect, roundedBorders)
 	}
 
+	clamp(min?: Size, max?: Size) {
+		const rect = super.clamp(min, max)
+		return new BorderedRectangle(rect, this.borders)
+	}
+
 	static equals(rect1: BorderedRectangle, rect2: BorderedRectangle) {
 		return super.equals(rect1, rect2) && Borders.equals(rect1.borders, rect2.borders)
 	}

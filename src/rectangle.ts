@@ -71,6 +71,10 @@ export default class Rectangle implements Rectangular {
 		return Rectangle.round(this, precision)
 	}
 
+	clamp(min?: Size, max?: Size) {
+		return Rectangle.clamp(this, min, max)
+	}
+
 	addBorders(borders: Borders) {
 		return BorderedRectangle.addBorders(this, borders)
 	}
@@ -116,6 +120,12 @@ export default class Rectangle implements Rectangular {
 		const rounder = (val: number) => Utilities.round(val, precision)
 		const rounded = Utilities.selectMap(<any>rect, select, rounder)
 		return new Rectangle(<Rectangular> <any> rounded)
+	}
+
+	static clamp(rect: Rectangular, min = Size.Zero, max = Size.Infinite) {
+		const { left, top} = rect
+		const { width, height } = Size.min(Size.max(rect, min), max)
+		return new Rectangle({ left, top, width, height })
 	}
 
 	static equals(rect1: Rectangle, rect2: Rectangle) {
