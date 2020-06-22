@@ -56,7 +56,7 @@ const Utilities = {
 
 	/* Array utility methods */
 
-	mapToObject<T extends {}, K extends keyof T>(keys: K[], map: (key: K) => T[K]): T {
+	mapToObject<T extends {}, K extends keyof T = keyof T>(keys: K[], map: (key: K) => T[K]): T {
 		const obj = <T>{}
 		keys.forEach(k => {
 			const val = map(k)

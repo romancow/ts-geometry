@@ -7,6 +7,8 @@ interface Size {
 }
 
 namespace Size {
+	const props: (keyof Size)[] = ['width', 'height']
+
 	export function scale(size: Size | number, scale: Scale): Size {
 		const { width, height } = Utilities.isNumber(size) ?
 			{ width: size, height: size } : size
@@ -35,16 +37,22 @@ namespace Size {
 		}
 	}
 
-	export function max(size1: Size, size2: Size): Size {
-		const props: (keyof Size)[] = ['width', 'height']
-		if (props.every(p => size1[p] >= size2[p]))
-			return size1
-		else if (props.every(p => size1[p] <= size2[p]))
-			return size2
-		else return Utilities.mapToObject(props, p => Math.max(size1[p], size2[p]))
+	export function min(...sizes: Size[]) {
+		return Utilities.mapToObject<Size>(props, prop => {
+			const values = sizes.map(size => size[prop])
+			return Math.min(...values)
+		})
+	}
+
+	export function max(...sizes: Size[]) {
+		return Utilities.mapToObject<Size>(props, prop => {
+			const values = sizes.map(size => size[prop])
+			return Math.max(...values)
+		})
 	}
 
 	export const Zero: Size = Object.freeze({ width: 0, height: 0 })
+	export const Infinite: Size = Object.freeze({ width: Infinity, height: Infinity })
 }
 
 export default Size
