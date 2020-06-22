@@ -1,5 +1,6 @@
 import Utilities from './utilities'
 import Size from './size'
+import Scale from './scale'
 
 type Point = {
 	x: number
@@ -24,6 +25,14 @@ namespace Point {
 
 	export function equals(point1: Point, point2: Point): boolean {
 		return Utilities.propsEqual(point1, point2, ['x', 'y'])
+	}
+
+	export function scale({ x, y }: Point, scale: Scale) {
+		const { x: scaleX, y: scaleY } = Scale.forceXY(scale)
+		return {
+			x: x * scaleX,
+			y: y * scaleY
+		}
 	}
 
 	export const Zero: Point = Object.freeze({ x: 0, y: 0 })
